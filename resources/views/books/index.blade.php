@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -22,7 +22,7 @@
 @endif
 <div class="content">
     @foreach($books as $book)
-        <div class="border rounded p-1">
+        <div class="border rounded p-1 mt-2">
             <p>{{ $book->title }}</p>
             <p>{{ $book->description }}</p>
             <p>{{ $book->author }}</p>

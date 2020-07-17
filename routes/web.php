@@ -29,3 +29,6 @@ Route::resource('addresses', 'AddressController');
 // Route::put('/books/{id}', 'BookController@update')->name('books.update');
 // Route::delete('/books', 'BookController@destroy')->name('books.destroy');
 // Route::get('/books/{id}', 'BookController@show')->name('books.show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
