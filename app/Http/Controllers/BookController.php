@@ -57,4 +57,11 @@ class BookController extends Controller
         $book = Book::find($id);
         return redirect()->route('books.index')->with('success', 'deleted successfully!');
     }
+
+    public function search(){
+        $books = [];
+        if (request('search') == 'title') $books = Book::where('title', request('q'))->get();
+        if (request('search') == 'author') $books = Book::where('author', request('q'))->get();
+        return view('books.index', ['books' => $books]);
+    }
 }

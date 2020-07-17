@@ -51,8 +51,12 @@
             </li>
         @endguest
       </ul>
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <form class="form-inline mt-2 mt-md-0" action="{{ route('books.search') }}" method="GET">
+        <input class="form-control mr-sm-2" name="q" id="q" type="text" placeholder="Search" aria-label="Search">
+        <select class="form-control mr-sm-2" name="search" id="search">
+          <option class="form-control mr-sm-2" value="title">Book title</option>
+          <option class="form-control mr-sm-2" value="author">Book Author</option>
+        </select>
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
