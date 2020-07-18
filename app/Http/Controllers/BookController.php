@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index(){
-        $books = Book::all();
+        if ( !empty(request('q')) && !empty(request('search')) ){
+            $books = [];
+            if (request('search') == 'title') $books = Book::where('title', request('q'))->paginate(5);
+            if (request('search') == 'author') $books = Book::where('author', request('q'))->paginate(5);
+        }else{
+            $books = Book::paginate(5);
+        }
         return view('books.index', ['books' => $books]);
     }
 
@@ -58,10 +64,10 @@ class BookController extends Controller
         return redirect()->route('books.index')->with('success', 'deleted successfully!');
     }
 
-    public function search(){
-        $books = [];
-        if (request('search') == 'title') $books = Book::where('title', request('q'))->get();
-        if (request('search') == 'author') $books = Book::where('author', request('q'))->get();
-        return view('books.index', ['books' => $books]);
-    }
+    // public function search(){
+    //     $books = [];
+    //     if (request('search') == 'title') $books = Book::where('title', request('q'))->get();
+    //     if (request('search') == 'author') $books = Book::where('author', request('q'))->get();
+    //     return view('books.index', ['books' => $books]);
+    // }
 }

@@ -10,7 +10,7 @@ class Category extends Model
 
     protected $fillable = ['title'];
 
-    protected function book(){
-        return $this->hasOne('App\Book');
+    protected function books(){
+        return $this->hasMany('App\Book');
     }
 }

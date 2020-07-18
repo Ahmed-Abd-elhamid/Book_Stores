@@ -9,7 +9,7 @@ class Book extends Model
     protected $fillable = ['title', 'description', 'author', 'released_at', 'price', 'category_id'];
 
     protected function stores(){
-        return $this->belongsToMany('App\Store');
+        return $this->belongsToMany('App\Store')->using('App\BookStore');
     }
 
     protected function category(){

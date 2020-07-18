@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/books/search', 'BookController@search')->name('books.search');
+// Route::get('/books/search', 'BookController@search')->name('books.search');
 Route::resource('books', 'BookController');
 Route::resource('stores', 'StoreController');
 Route::resource('categories', 'CategoryController');
