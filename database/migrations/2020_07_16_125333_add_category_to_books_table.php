@@ -14,7 +14,7 @@ class AddCategoryToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->unsigned();
+            $table->unsignedBigInteger('category_id')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
@@ -28,7 +28,7 @@ class AddCategoryToBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            //
+            // $table->dropColumn('category_id');
         });
     }
 }

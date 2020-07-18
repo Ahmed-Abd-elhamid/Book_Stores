@@ -14,7 +14,7 @@ class AddAddressToStoresTable extends Migration
     public function up()
     {
         Schema::table('stores', function (Blueprint $table) {
-            $table->unsignedBigInteger('address_id')->unsigned();
+            $table->unsignedBigInteger('address_id')->nullable();
 
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
         });
@@ -28,7 +28,7 @@ class AddAddressToStoresTable extends Migration
     public function down()
     {
         Schema::table('stores', function (Blueprint $table) {
-            //
+            // $table->dropColumn('address_id');
         });
     }
 }
